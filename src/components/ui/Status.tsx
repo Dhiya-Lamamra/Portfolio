@@ -1,7 +1,8 @@
 "use client";
 import { Card } from "./card";
 import { Section } from "./Section";
-import {ArrowUpRight, Badge, Code, LucideIcon, Phone, Globe, X, PhoneIcon} from "lucide-react"
+import { Badge } from "./badge";
+import {ArrowUpRight, Code, LucideIcon, Phone, Globe, X, PhoneIcon} from "lucide-react"
 import { StickyNote } from "lucide-react";
 import Link from "next/link";
 import { GithubIcon } from "./icons/GithubIcon";
