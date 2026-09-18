@@ -64,12 +64,12 @@ export const Hero = () =>{
           
           {/* Image */}
         <Image 
-          src="https://static0.srcdn.com/wordpress/wp-content/uploads/2017/05/walter-white-breaking-bad-final-scene.jpg?w=1200&h=675&fit=crop"
+          src="/ImageProfil.png"
           width={240}
           height={240}
           /* On utilise shadow-2xl et shadow-black/40 pour une ombre circulaire propre */
           className="w-full h-full object-cover object-top-left rounded-full" 
-          alt="Heisenberg"
+          alt="Photo de profil de Dhiya-Eddine Lamamra"
         />
         </div>
           <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"> 
@@ -117,11 +117,12 @@ export const Hero = () =>{
 
               {/* Photo en premier plan */}
             <Image
-              src="https://static0.srcdn.com/wordpress/wp-content/uploads/2017/05/walter-white-breaking-bad-final-scene.jpg?w=1200&h=675&fit=crop"
+              src="/ImageProfil.png"
               /* shadow-md donne une profondeur légère, black/10 rend l'ombre très douce */
               className="w-48 h-48 rounded-full object-cover object-top-left shadow-2xl shadow-black/40 dark:shadow-white/40"
               width={192}
               height={192}
+              alt="Photo de profil de Dhiya-Eddine Lamamra"
             />
 
               {/* Informations détaillées */}

@@ -1,20 +1,28 @@
 "use client"
-import React from "react";
 import { Section } from "./Section";
 import { Badge } from "./badge";
-import { ReactLogo } from "./icons/ReactLogo";
-import { NextLogo } from "./icons/NextLogo";
-import { TailwindLogo } from "./icons/TailwindLogo";
 import { motion } from "framer-motion";
 import { Premiere } from "./icons/Premiere";
 import { PhotoShop } from "./icons/PhotoShop";
 import { AfterEffect } from "./icons/AfterEffect";
-import { Figma } from "./icons/Figma";
 import { useState } from "react";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 type ShowcaseType = "premiere" | "photoshop" | "aftereffect" | "figma" | null;
+
+const AFTER_EFFECT_PROJECTS = [
+  { file: "VideoEffect1.mp4", title: "Animation de Compteur Numérique allons de 1 à 3000" },
+  { file: "VideoEffect2.mp4", title: "Typographie Dynamique à Bulles Progressives" },
+  { file: "VideoEffect3.mp4", title: "Détourage Rotoscopie & Effet de Contour Personnalisé" },
+  { file: "VideoEffect4.mp4", title: "Déformation d'Arrière-Plan Stylisée avec Étalonnage Couleur" },
+  { file: "VideoEffect5.mp4", title: "Effet de Texte Style « Flashback » Rétro" },
+  { file: "VideoEffect6.mp4", title: "Animation de Texte Glitch Numérique" },
+  { file: "VideoEffect7.mp4", title: "Effet Visuel Artistique « Mona Lisa » (Joconde)" },
+  { file: "VideoEffect8.mp4", title: "Incrustation et Détournement par Rotoscopie Avancée" },
+  { file: "VideoEffect9.mp4", title: "Effet de Typographie Scintillante et Lumineuse" },
+  { file: "VideoEffect10.mp4", title: "Style de Texte Cinématographique « Légendaire »" },
+];
 
 export const Skills2 = () => {
   const [showcase, setShowcase] = useState<ShowcaseType>(null);
@@ -22,7 +30,7 @@ export const Skills2 = () => {
     <Section className="flex flex-col items-start gap-4">
       <Badge variant="outline">Autres compétences</Badge>
       <h2 className="scroll-m-2 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        J'aime aussi travailler avec
+        J&apos;aime aussi travailler avec
       </h2>
       
         <div className="flex max-md:flex-col gap-4">
@@ -54,7 +62,7 @@ export const Skills2 = () => {
             </motion.div>
             <h3 className="mb-2 text-2xl font-semibold dark:text-white">PhotoShop</h3>
             <p className="text-sm text-muted-foreground dark:text-gray-400">
-              Édition d'images et conception graphique.
+              Édition d&apos;images et conception graphique.
             </p>
             <button 
             onClick={() => setShowcase("photoshop")} 
@@ -72,7 +80,7 @@ export const Skills2 = () => {
             </motion.div>
             <h3 className="mb-2 text-2xl font-semibold dark:text-white">After Effects</h3>
             <p className="text-sm text-muted-foreground dark:text-gray-400">
-              Création d'effets visuels et animation.
+              Création d&apos;effets visuels et animation.
             </p>
             <button 
             onClick={() => setShowcase("aftereffect")} 
@@ -154,23 +162,27 @@ export const Skills2 = () => {
                   )}
 
                   {showcase === "aftereffect" && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="flex flex-col gap-2">
-                        <p className="text-xs font-medium text-purple-400 uppercase tracking-wider">Effets Spéciaux / VFX (Boucle)</p>
-                        <div className="rounded-lg overflow-hidden border bg-black aspect-video">
-                          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-                            <source src="/videos/ae_loop1.mp4" type="video/mp4" />
-                          </video>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <p className="text-xs font-medium text-purple-400 uppercase tracking-wider">Motion Design (Boucle)</p>
-                        <div className="rounded-lg overflow-hidden border bg-black aspect-video">
-                          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-                            <source src="/videos/ae_loop2.mp4" type="video/mp4" />
-                          </video>
-                        </div>
-                      </div>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {AFTER_EFFECT_PROJECTS.map((project) => (
+                        <article key={project.file} className="flex flex-col gap-2">
+                          <p className="text-xs font-medium text-purple-400 uppercase tracking-wider">
+                            <span className="normal-case text-muted-foreground">{project.title}</span>
+                          </p>
+                          <div className="rounded-lg overflow-hidden border bg-black aspect-video">
+                            <video
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              preload="metadata"
+                              className="w-full h-full object-cover"
+                              aria-label={project.title}
+                            >
+                              <source src={`/videos/VideoEffect/${project.file}`} type="video/mp4" />
+                            </video>
+                          </div>
+                        </article>
+                      ))}
                     </div>
                   )}
                 </div>
