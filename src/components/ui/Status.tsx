@@ -64,7 +64,7 @@ const SIDE_PROJECTS :SideProjectsProps[]= [
   {
     Logo: Code,
     title: "Portfolio",
-    description: "Portfolio personnel developpé avec Next.js, React, TypeScript, Tailwind CSS et Framer Motion. Le projet presente mon parcours, mes competences et mes experiences à travers une interface responsive avec mode sombre, animations, modales interactives, liens de contact, documents et galeries de projets video pour Premiere Pro, Photoshop et After Effects.",
+    description: "Portfolio personnel developpé avec Next.js, React, TypeScript, Tailwind CSS et Framer Motion. Le projet présente mon parcours, mes competences et mes experiences à travers une interface responsive avec mode sombre, animations, modales interactives, liens de contact, documents et galeries de projets video pour Premiere Pro, Photoshop et After Effects.",
     url: "https://github.com/Dhiya-Lamamra/Portfolio.git",
     videoUrl: "https://youtube.com"
   },
