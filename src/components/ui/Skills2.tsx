@@ -137,7 +137,7 @@ export const Skills2 = () => {
                         <p className="text-xs font-medium text-red-500 uppercase tracking-wider">Montage video #2</p>
                         <div className="rounded-lg overflow-hidden border bg-black aspect-video">
                           <video controls className="w-full h-full object-cover">
-                            <source src="/videos/L'Origine des DEMONS dans DEmon Slayer.mp4" type="video/mp4" />
+                            <source src="/videos/L'Origine des DEMONS dans Demon Slayer.mp4" type="video/mp4" />
                           </video>
                         </div>
                       </div>

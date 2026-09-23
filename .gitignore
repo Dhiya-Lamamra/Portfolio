@@ -43,3 +43,5 @@ next-env.d.ts
 
 # Fichiers vidéos lourds
 /public/videos/*.mp4
+!/public/videos/DSvideo.mp4
+!/public/videos/L'Origine des DEMONS dans Demon Slayer.mp4
