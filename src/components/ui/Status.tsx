@@ -96,7 +96,7 @@ const WORK: WorkProps[] = [
     role: "Agent de securite",
     date: "2025 - present",
     url: "https://bm-groupe.ca",
-    phone: "+1 438-870-7418",
+    phone: "+1 514-606-0996",
     fullDescription: "En tant qu'agent de securite chez B&M Groupe, je suis responsable de maintenir un environnement sur et securise pour les clients et les employes. Mes taches incluent la surveillance des lieux, la gestion des acces, la prevention des incidents et la reponse rapide en cas d'urgence.",
   },
   {
@@ -105,7 +105,7 @@ const WORK: WorkProps[] = [
     role: "Agent de securite evenementiel",
     date: "2023 - present",
     url: "https://best.garda.com",
-    phone: "+1 438-870-7418",
+    phone: "+1 514-281-2811",
     fullDescription: "En tant qu'agent de securite evenementiel chez Best Garda, je suis charge de garantir la securite et le bon deroulement des evenements. Mes responsabilites incluent la gestion de la foule, la surveillance des acces et la prevention des incidents.",
   },
   {

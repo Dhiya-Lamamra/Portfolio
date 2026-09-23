@@ -61,7 +61,7 @@ export const ContactSection = () => {
           </div>
 
           <a
-            href="/CV.pdf"
+            href="/CV final.pdf"
             download="CV_Dhiya-Eddine_Lamamra.pdf"
             onClick={handleCVDownload}
             className={`w-full inline-flex items-center justify-center gap-2 transition-all py-2 px-4 rounded-sm font-medium text-sm border ${
