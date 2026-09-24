@@ -2,8 +2,8 @@
 import { Card } from "./card";
 import { Section } from "./Section";
 import { Badge } from "./badge";
-import {ArrowUpRight, Code, LucideIcon, Phone, Globe, X, PhoneIcon} from "lucide-react"
-import { StickyNote } from "lucide-react";
+import {ArrowUpRight, LucideIcon, Monitor, Phone, Globe, X, PhoneIcon} from "lucide-react"
+import { Tooth } from "@phosphor-icons/react";
 import Link from "next/link";
 import { GithubIcon } from "./icons/GithubIcon";
 import { YoutubeIcon } from "./icons/YoutubeIcon";
@@ -63,14 +63,14 @@ export const Status = () =>{
 
 const SIDE_PROJECTS :SideProjectsProps[]= [
   {
-    Logo: Code,
+    Logo: Monitor,
     title: "Portfolio",
     description: "Portfolio personnel developpé avec Next.js, React, TypeScript, Tailwind CSS et Framer Motion. Le projet présente mon parcours, mes competences et mes experiences à travers une interface responsive avec mode sombre, animations, modales interactives, liens de contact, documents et galeries de projets video pour Premiere Pro, Photoshop et After Effects.",
     url: "https://github.com/Dhiya-Lamamra/Portfolio.git",
     videoUrl: "https://youtube.com"
   },
   {
-    Logo: StickyNote,
+    Logo: Tooth,
     title: "Dentify",
     description: "Projet realise en equipe de 6 collègues avec une organisation Agile Scrum et un developpement structure par sprints. Dentify est une application et un site web de reservation dentaire permettant de gérer les rendez-vous du point de vue du client comme de l'employé. J'ai principalement developpé le frontend mobile avec React Native et JavaScript, en realisant environ 70 % de cette partie avec un collegue qui a completé les 30 % restants, tout en collaborant sur les parcours, les interfaces et les fonctionnalites de gestion des reservations.",
     url: "https://github.com/Dhiya-Lamamra/Dentify.git",

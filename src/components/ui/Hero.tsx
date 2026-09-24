@@ -71,7 +71,8 @@ export const Hero = () =>{
           width={150}
           height={150}
           /* On utilise shadow-2xl et shadow-black/40 pour une ombre circulaire propre */
-          className="w-full h-full object-cover object-top-left rounded-full" 
+          className="w-full h-full object-cover object-[80%_15%] rounded-full" 
+          style={{ filter: "brightness(1.20) contrast(1.04) saturate(0.96)", transform: "scale(1.03)" }}
           alt="Photo de profil de Dhiya-Eddine Lamamra"
         />
           </button>
@@ -123,7 +124,8 @@ export const Hero = () =>{
             <Image
               src="/photo.jpg"
               /* shadow-md donne une profondeur légère, black/10 rend l'ombre très douce */
-              className="w-[min(60vw,18rem)] h-[min(60vw,18rem)] rounded-full object-cover object-top-left shadow-2xl shadow-black/40 dark:shadow-white/40"
+              className="w-[min(60vw,18rem)] h-[min(60vw,18rem)] rounded-full object-cover object-[80%_15%] shadow-2xl shadow-black/40 dark:shadow-white/40"
+              style={{ filter: "brightness(1.20) contrast(1.04) saturate(0.96)", transform: "scale(1.03)" }}
               width={288}
               height={288}
               alt="Photo de profil de Dhiya-Eddine Lamamra"
