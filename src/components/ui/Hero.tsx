@@ -55,10 +55,13 @@ export const Hero = () =>{
       </div>
       <div className="flex-2 max-w-150 flex justify-center lg:justify-center">
        {/* Conteneur principal avec le clic et le curseur */}
-        <div 
-          className="relative group w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:scale-110 shadow-2xl shadow-black/40 dark:shadow-white/40"
-          onClick={() => setIsOpen(true)}
-        >
+        <div className="relative group">
+          <button
+            type="button"
+            aria-label="Agrandir la photo de profil"
+            className="relative block w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:scale-110 shadow-2xl shadow-black/40 dark:shadow-white/40"
+            onClick={() => setIsOpen(true)}
+          >
           {/* Contour haute visibilité (ring) */}
           <div className="absolute inset-0 z-10 rounded-full ring-2 ring-black/20 dark:ring-white/30 pointer-events-none" />
           
@@ -71,10 +74,11 @@ export const Hero = () =>{
           className="w-full h-full object-cover object-top-left rounded-full" 
           alt="Photo de profil de Dhiya-Eddine Lamamra"
         />
-        </div>
-          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"> 
+          </button>
+          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
             Cliquez pour agrandir
           </span> 
+        </div>
       </div>
       {/* Fenêtre Premier Plan (Modal) */}
       {isOpen && (
@@ -119,15 +123,14 @@ export const Hero = () =>{
             <Image
               src="/photo.jpg"
               /* shadow-md donne une profondeur légère, black/10 rend l'ombre très douce */
-              className="w-48 h-48 rounded-full object-cover object-top-left shadow-2xl shadow-black/40 dark:shadow-white/40"
-              width={220}
-              height={220}
+              className="w-[min(60vw,18rem)] h-[min(60vw,18rem)] rounded-full object-cover object-top-left shadow-2xl shadow-black/40 dark:shadow-white/40"
+              width={288}
+              height={288}
               alt="Photo de profil de Dhiya-Eddine Lamamra"
             />
 
               {/* Informations détaillées */}
               <div className="text-center space-y-4 w-full">
-                <h2 className="text-2xl font-bold">Dhiya-Eddine Lamamra</h2>
                 <div className="flex flex-col gap-3 pt-4 border-t text-left w-full">
                   {/* Item Date de Naissance (ID) */}
                   <div 
@@ -175,11 +178,10 @@ export const Hero = () =>{
                   <p className="text-[10px] font-bold text-center uppercase mb-2 bg-muted py-1 rounded">
                     {activeDoc === "ID" ? "Carte d'identité" : "Preuve d'inscription ÉTS"}
                   </p>
-
                   <Image
-                    src={activeDoc === "ID" ? "/preuveID.jpg" : "/preuveETS.jpg"} 
-                    className="rounded-lg w-full h-auto group-hover:opacity-90 transition-opacity" 
-                    alt="Document" 
+                    src={activeDoc === "ID" ? "/preuveID.jpg" : "/preuveETS.jpg"}
+                    className="rounded-lg w-full h-auto group-hover:opacity-90 transition-opacity"
+                    alt="Document"
                     width={300}
                     height={200}
                   />
@@ -194,35 +196,34 @@ export const Hero = () =>{
       )}
       {/*Couche de lightBox isolee pour le zoom de l'image*/}
       {zoomedImg && (
-        <div 
+        <div
           className="fixed inset-0 z-200 flex flex-col items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200"
-          onClick={() => setZoomedImg(null)} // Ferme le zoom en cliquant n'importe où  
+          onClick={() => setZoomedImg(null)}
         >
           <button
             className="absolute top-4 right-4 text-white p-2 rounded-full hover:bg-white/20 transition-colors z-210 border border-white/10"
-            onClick={() => setZoomedImg(null)} // Ferme le zoom en cliquant sur le bouton
+            onClick={() => setZoomedImg(null)}
           >
             <X size={20} />
           </button>
-
           <div
             className="relative w-[90vw] h-[80vh] max-w-5xl max-h-[85vh] animate-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()} // Empêche de fermer en cliquant sur le conteneur de l'image
+            onClick={(e) => e.stopPropagation()}
           >
-          <Image 
-            src={zoomedImg} 
-            className="object-contain select-none" 
-            alt="Document agrandi" 
-            fill //
-            sizes="(max-width:1024px) 90vw, 1200px"
-            quality={100}
-            priority
-          />
+            <Image
+              src={zoomedImg}
+              className="object-contain select-none"
+              alt="Document agrandi"
+              fill
+              sizes="(max-width:1024px) 90vw, 1200px"
+              quality={100}
+              priority
+            />
           </div>
           <p className="text-white/40 text-xs mt-4 pointer-events-none select-none font-sans tracking-wide">
-            Cliquez n'importe ou pour fermer le zoom
+            Cliquez n&apos;importe où pour fermer le zoom
           </p>
-          </div>
+        </div>
       )}
     </Section>
   )
