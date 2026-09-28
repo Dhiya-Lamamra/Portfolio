@@ -108,7 +108,7 @@ export const ContactSection = () => {
             
             <div className="relative size-32 bg-white p-2 rounded-sm border border-border/40 shadow-sm shrink-0 flex items-center justify-center mt-2">
               <Image 
-                src="/qrcode.png" 
+                src="/qr.png" 
                 alt="QR Code Portfolio" 
                 width={112} 
                 height={112}
