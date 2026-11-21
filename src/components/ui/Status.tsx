@@ -1,9 +1,9 @@
 "use client";
 import { Card } from "./card";
 import { Section } from "./Section";
-import { Badge } from "./badge";
-import {ArrowUpRight, LucideIcon, Monitor, Phone, Globe, X, PhoneIcon} from "lucide-react"
+import {ArrowUpRight, LucideIcon, Monitor, Phone, Globe, X, PhoneIcon, Activity, ShieldAlert, Sparkles, Bot} from "lucide-react"
 import { Tooth } from "@phosphor-icons/react";
+import { Badge } from "./badge";
 import Link from "next/link";
 import { GithubIcon } from "./icons/GithubIcon";
 import { YoutubeIcon } from "./icons/YoutubeIcon";
@@ -17,17 +17,13 @@ export const Status = () =>{
         <Section className="flex max-md:flex-col items-stretch gap-2"> 
           <div className="flex-3 min-w-0 flex flex-col">
             <Card className=" p-4 flex flex-col gap-2 w-full h-full rounded-2xl hover:bg-card/40 border border-transparent hover:border-border">
-              <p className="text-sm font-medium text-muted-foreground tracking-wider uppercase">Mes projets</p>
-              <div className="flex flex-1 flex-col gap-6 justify-between">
-                {SIDE_PROJECTS.map((project, index) => (
-                  <SideProjects 
-                    key={index} 
-                    Logo={project.Logo}
-                    title={project.title}
-                    description={project.description}
-                    url={project.url || "#"}
-                    videoUrl={project.videoUrl}
-                     />
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-medium text-muted-foreground tracking-wider uppercase">Mes projets</p>
+                <span className="text-[11px] text-muted-foreground">Cliquez pour les détails</span>
+              </div>
+              <div className="flex flex-1 flex-col gap-2">
+                {SIDE_PROJECTS.map((project) => (
+                  <SideProjects key={project.title} {...project} />
                 ))}
               </div>
             </Card>
@@ -63,18 +59,39 @@ export const Status = () =>{
 
 const SIDE_PROJECTS :SideProjectsProps[]= [
   {
-    Logo: Monitor,
-    title: "Portfolio",
-    description: "Portfolio personnel developpé avec Next.js, React, TypeScript, Tailwind CSS et Framer Motion. Le projet présente mon parcours, mes competences et mes experiences à travers une interface responsive avec mode sombre, animations, modales interactives, liens de contact, documents et galeries de projets video pour Premiere Pro, Photoshop et After Effects.",
-    url: "https://github.com/Dhiya-Lamamra/Portfolio.git",
-    videoUrl: "https://youtube.com"
+    Logo: Activity,
+    title: "Explorateur de séismes",
+    label: "Agent IA",
+    summary: "Agent Athena AI connecté à un serveur MCP qui affiche les séismes récents dans le monde (données USGS en direct) dans un widget interactif.",
+    description: "Agent Athena AI qui répond à des demandes comme « Montre-moi les séismes de la semaine au Japon ». L'agent appelle l'outil MCP chercher_seismes (période, magnitude minimale, lieu) ; mon serveur Node.js interroge l'API publique de l'USGS (cache de 60 s et nouvel essai en cas d'erreur), filtre et trie les résultats, puis les renvoie au widget intégré à la conversation. Le widget permet de relancer la recherche, filtrer par magnitude avec des pastilles, naviguer sur une mini-carte, trier, et consulter les détails de chaque séisme (profondeur, ressenti, alerte tsunami).",
+    tags: ["MCP", "Node.js", "Zod", "HTML/CSS/JS", "API USGS"],
+    url: "https://github.com/Dhiya-Lamamra/athena-mcp-agent",
+  },
+  {
+    Logo: ShieldAlert,
+    title: "Explorateur de vulnérabilités",
+    label: "Agent IA",
+    summary: "Agent Athena AI connecté à un serveur MCP qui explore de vraies vulnérabilités (CVE) de la base NVD du NIST dans un widget interactif.",
+    description: "Même architecture appliquée à la cybersécurité : l'utilisateur demande par exemple « les vulnérabilités critiques de Microsoft des 30 derniers jours ». L'agent appelle l'outil MCP chercher_vulnerabilites (fournisseur, produit, sévérité, jours) ; le serveur interroge l'API CVE 2.0 de la NVD, extrait le fournisseur et le produit (identifiants CPE), le score et la sévérité CVSS, puis affiche les résultats dans un widget : filtres par sévérité, recherche, tri par score ou date, et détails de chaque CVE (vecteur CVSS, description, lien vers la fiche NVD).",
+    tags: ["MCP", "Node.js", "Zod", "HTML/CSS/JS", "API NVD"],
+    url: "https://github.com/Dhiya-Lamamra/athena-defi",
   },
   {
     Logo: Tooth,
     title: "Dentify",
-    description: "Projet realise en equipe de 6 collègues avec une organisation Agile Scrum et un developpement structure par sprints. Dentify est une application et un site web de reservation dentaire permettant de gérer les rendez-vous du point de vue du client comme de l'employé. J'ai principalement developpé le frontend mobile avec React Native et JavaScript, en realisant environ 70 % de cette partie avec un collegue qui a completé les 30 % restants, tout en collaborant sur les parcours, les interfaces et les fonctionnalites de gestion des reservations.",
-    url: "https://github.com/Dhiya-Lamamra/Dentify.git",
-    videoUrl: "https://youtube.com"
+    label: "Projet d'équipe",
+    summary: "Application mobile et site web de réservation dentaire, réalisés en équipe de 6 en Agile Scrum.",
+    description: "Projet réalisé en équipe de 6 collègues avec une organisation Agile Scrum et un développement structuré par sprints. Dentify est une application et un site web de réservation dentaire permettant de gérer les rendez-vous du point de vue du client comme de l'employé. J'ai principalement développé le frontend mobile avec React Native et JavaScript, en réalisant environ 70 % de cette partie avec un collègue qui a complété les 30 % restants, tout en collaborant sur les parcours, les interfaces et les fonctionnalités de gestion des réservations.",
+    tags: ["React Native", "JavaScript", "Scrum"],
+    url: "https://github.com/Dhiya-Lamamra/Dentify",
+  },
+  {
+    Logo: Monitor,
+    title: "Portfolio",
+    summary: "Ce site : Next.js, React, TypeScript, Tailwind CSS et Framer Motion, avec mode sombre et galeries vidéo.",
+    description: "Portfolio personnel développé avec Next.js, React, TypeScript, Tailwind CSS et Framer Motion. Le projet présente mon parcours, mes compétences et mes expériences à travers une interface responsive avec mode sombre, animations, modales interactives, liens de contact, documents et galeries de projets vidéo pour Premiere Pro, Photoshop et After Effects.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    url: "https://github.com/Dhiya-Lamamra/Portfolio",
   },
 ]
 
@@ -177,101 +194,184 @@ const Work = (props: WorkProps) => {
 type SideProjectsProps = {
   Logo: LucideIcon;
   title: string;
+  /** Petite étiquette affichée à côté du titre (ex. "Agent IA") */
+  label?: string;
+  /** Résumé court affiché dans la liste */
+  summary: string;
+  /** Description complète affichée dans la fenêtre de détails */
   description: string;
+  tags: string[];
   url: string;
   videoUrl?: string;
+  demoUrl?: string;
 }
 
 const SideProjects = (props: SideProjectsProps) => {
-  const [showChoices, setShowChoices] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+  const isAI = props.label === "Agent IA";
 
-  //Fonction pour ouvrirs les liens sans declancher le modal du parent
+  // Ouvre les liens sans déclencher la fenêtre de détails du parent
   const handleDirectClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   }
 
   return(
     <>
-    <div 
-    onClick={() => setShowChoices(true)}
-    className="inline-flex items-start gap-4 hover:bg-accent/50 transition-colors p-2 rounded-xl w-full group cursor-pointer">
-        <span className="bg-accent text-accent-foreground p-3 rounded-xl min-w-12 h-12 flex items-center justify-center">
+    <div
+      onClick={() => setShowDetails(true)}
+      className="flex items-start gap-4 hover:bg-accent/50 transition-colors p-2 rounded-xl w-full group cursor-pointer"
+    >
+        <span className={`p-3 rounded-xl min-w-12 h-12 flex items-center justify-center transition-colors ${
+          isAI
+            ? "bg-blue-500/10 text-blue-600 dark:text-blue-400 ring-1 ring-blue-500/20"
+            : "bg-accent text-accent-foreground"
+        }`}>
           <props.Logo size={20} />
         </span>
-        
-        <div className="flex flex-col flex-1 min-w-0 gap-2 group">
-          <div className="flex items-center justify-between">
-            <p className="text-base font-semibold text-foreground group-hover:text-primary transition-colors truncate">
-              {props.title}
-            </p>
-            
-            <div className="flex items-center gap-3">
-              <Link 
-                href={props.url} 
-                target="_blank" 
+
+        <div className="flex flex-col flex-1 min-w-0 gap-1.5">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 min-w-0 flex-wrap">
+              <p className="text-base font-semibold text-foreground group-hover:text-primary transition-colors truncate">
+                {props.title}
+              </p>
+              {props.label && (
+                <Badge
+                  variant="outline"
+                  className={`rounded-full text-[10px] ${isAI ? "border-blue-500/30 text-blue-600 dark:text-blue-400" : ""}`}
+                >
+                  {isAI && <Sparkles />}
+                  {props.label}
+                </Badge>
+              )}
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0">
+              <Link
+                href={props.url}
+                target="_blank"
                 onClick={handleDirectClick}
+                aria-label={`Code source de ${props.title}`}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                <GithubIcon size={20} />
+                <GithubIcon size={18} />
               </Link>
-              
+
               {props.videoUrl && (
-                <Link 
-                  href={props.videoUrl} 
-                  target="_blank" 
+                <Link
+                  href={props.videoUrl}
+                  target="_blank"
                   onClick={handleDirectClick}
+                  aria-label={`Vidéo de ${props.title}`}
                   className="text-muted-foreground hover:text-red-500 transition-colors"
                 >
-                  <YoutubeIcon size={20} />
+                  <YoutubeIcon size={18} />
                 </Link>
               )}
             </div>
           </div>
 
-          <p className="text-sm text-muted-foreground break-words leading-relaxed mt-1">
-            {props.description}
-          </p>  
+          <p className="text-sm text-muted-foreground break-words leading-relaxed">
+            {props.summary}
+          </p>
+
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {props.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[10px] px-2 py-0.5 rounded-full bg-accent/70 text-muted-foreground border border-border/50"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
     </div>
-    {/* Modal de choix (reste identique à l'étape précédente) */}
-      {showChoices && (
-        <div 
+
+    {/* Fenêtre de détails */}
+      {showDetails && (
+        <div
           className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-background/60 backdrop-blur-md animate-in fade-in duration-300"
-          onClick={() => setShowChoices(false)}
+          onClick={() => setShowDetails(false)}
         >
-          <div 
-            className="bg-card border shadow-2xl rounded-xl p-6 max-w-sm w-full flex flex-col gap-4 animate-in zoom-in-70 duration-300"
+          <div
+            className="bg-card border shadow-2xl rounded-2xl p-6 max-w-xl w-full max-h-[90vh] overflow-y-auto flex flex-col gap-5 relative animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-center mb-2">
-              <h3 className="text-xl font-bold">{props.title}</h3>
-              <p className="text-sm text-muted-foreground">Choisir une destination</p>
+            <button
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground p-1 rounded-lg hover:bg-accent"
+              onClick={() => setShowDetails(false)}
+              aria-label="Fermer"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="flex items-center gap-4 border-b pb-4 pr-8">
+              <span className={`p-3 rounded-xl min-w-12 h-12 flex items-center justify-center ${
+                isAI
+                  ? "bg-blue-500/10 text-blue-600 dark:text-blue-400 ring-1 ring-blue-500/20"
+                  : "bg-accent text-accent-foreground"
+              }`}>
+                <props.Logo size={22} />
+              </span>
+              <div className="min-w-0">
+                <h3 className="text-lg font-bold text-foreground">{props.title}</h3>
+                {props.label && (
+                  <p className="text-xs text-muted-foreground font-medium flex items-center gap-1">
+                    {isAI && <Bot size={12} />}
+                    {props.label}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <p className="text-sm text-foreground leading-relaxed bg-accent/20 p-3 rounded-xl border border-accent/30">
+              {props.description}
+            </p>
+
+            <div className="flex flex-wrap gap-1.5">
+              {props.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs px-2.5 py-1 rounded-full bg-accent text-accent-foreground border border-border/50"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
 
             <div className="flex flex-col gap-3">
-              <Link 
-                href={props.url} 
+              <Link
+                href={props.url}
                 target="_blank"
-                className="flex items-center justify-between p-3 rounded-xl border bg-accent/20 hover:bg-accent hover:border-primary transition-all group"
+                className="flex items-center justify-center gap-2 w-full p-3 rounded-xl font-medium text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
               >
-                <div className="flex items-center gap-3">
-                  <GithubIcon size={24} />
-                  <span className="font-medium">Code Source</span>
-                </div>
-                <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                <GithubIcon size={16} />
+                <span>Voir le code source</span>
+                <ArrowUpRight size={14} />
               </Link>
 
-              {props.videoUrl && (
-                <Link 
-                  href={props.videoUrl} 
+              {props.demoUrl && (
+                <Link
+                  href={props.demoUrl}
                   target="_blank"
-                  className="flex items-center justify-between p-3 rounded-xl border bg-red-500/5 hover:bg-red-500/10 hover:border-red-600 transition-all group"
+                  className="flex items-center justify-center gap-2 w-full p-3 rounded-xl border font-medium text-sm hover:bg-accent transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <YoutubeIcon size={24} className="text-red-600" />
-                    <span className="font-medium">Démo Vidéo</span>
-                  </div>
-                  <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity text-red-600" />
+                  <Bot size={16} />
+                  <span>Essayer l&apos;agent</span>
+                  <ArrowUpRight size={14} />
+                </Link>
+              )}
+
+              {props.videoUrl && (
+                <Link
+                  href={props.videoUrl}
+                  target="_blank"
+                  className="flex items-center justify-center gap-2 w-full p-3 rounded-xl border font-medium text-sm bg-red-500/5 hover:bg-red-500/10 hover:border-red-600 transition-all"
+                >
+                  <YoutubeIcon size={16} className="text-red-600" />
+                  <span>Démo vidéo</span>
+                  <ArrowUpRight size={14} />
                 </Link>
               )}
             </div>
@@ -280,7 +380,6 @@ const SideProjects = (props: SideProjectsProps) => {
       )}
     </>
   )
-
 }
 
 

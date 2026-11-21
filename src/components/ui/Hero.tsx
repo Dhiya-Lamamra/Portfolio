@@ -38,7 +38,7 @@ export const Hero = () =>{
   setActiveDoc((prev) => (prev === docType ? null : docType));
 }
   return(
-    <Section className="flex max-lg:flex-col item-start gap-8 md:gap-12 ">
+    <Section className="flex max-lg:flex-col items-center gap-8 md:gap-12">
       <div className="flex-3 flex flex-col gap-1.5">
         <h2 className="font-robot text-primary font-bold text-4xl">
           Dhiya-Eddine Lamamra
@@ -104,7 +104,7 @@ export const Hero = () =>{
                   <Image 
                     src="/preuveAhuntsic.jpg"
                     alt="Diplome Ahuntsic" 
-                    className="w-full h-auto rounded-lg group-hover: opaciity-90 transition-opacity"
+                    className="w-full h-auto rounded-lg group-hover:opacity-90 transition-opacity"
                     width={300}
                     height={200}
                   />
